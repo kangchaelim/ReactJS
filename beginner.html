@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <!-- React JS는 interactivity의 원동력이다. -->
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <!-- ReactDom은 React element를 가져다가 HTML로 바꾸는 역할을 한다. -->
+    <script>
+        const root = document.getElementById("root");
+        const h3 = React.createElement(
+            "H3", 
+            // {id: "sexy-h3",style:{color:"red"}}, 
+            {
+                onMouseEnter: () => console.log("mouse enter")
+            },
+            "Hello, i'm a h3");
+        ReactDOM.render(h3, root)
+        // render()는 React element를 가지고 HTML로 만들어 배치한다는 것이다.
+
+        const btn = React.createElement('button', {
+            onClick: () => console.log("i'm clicked"),
+            style:{
+                backgroundColor:"tomato",
+            }
+        }, "Click me")
+        ReactDOM.render(btn, root)
+
+        const container = React.createElement('div', null, [h3, btn]);
+        ReactDOM.render(container, root)
+    </script>
+</body>
+</html>

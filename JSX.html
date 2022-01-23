@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JSX는 Javascript를 확장한 문법 -->
+    <!-- 기본적으로 우리가 HTML에서 사용한 문법과 흡사한 문법을 사용해 React 요소를 만들 수 있게 해줌 -->
+    
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">       
+        const root = document.getElementById("root");
+
+        function Title(){
+            return(
+                <h3 
+                id="title" 
+                onMouseEnter={()=> console.log("mouse enter")}>
+                Hello I'm a title
+            </h3>
+            )
+            };
+
+        const Btn = () => (
+            <button 
+                style= {{
+                backgroundColor : "tomato"}} 
+                onClick={()=> console.log("I'm clicked")}>
+                Click me
+            </button>
+            );
+        // Title , Btn 같은 방식임
+
+        // const Container = React.createElement('div', null, [Title, Btn]);
+        const Container = () => (<div><Title/><Btn/></div> );
+        ReactDOM.render(<Container/>, root)
+
+        // 대문자로 써줘야하는 이유? 소문자로 쓰게 될 경우 React랑 JSX는 HTML button태그라고 생각할 거임
+
+    </script>
+</body>
+</html>
