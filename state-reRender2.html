@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel">
+           
+        const root = document.getElementById("root");
+        function App(){
+            let [counter, setCounter] = React.useState(0);
+            const onClick = () => {
+                setCounter(counter + 1);
+            } 
+            // React.useState()는 react기능을 쓸 수 있게 해주는 하나의 도구
+            // counter은 현재의 값 state이고 setCounter(modifier함수)은 이벤트 발생 시 변화를 주는 부분이어서 이후 counter로 다시 저장된다.
+            // modifier함수를 가지고 state를 변경할 때 컴포넌트가 재생성됨. 새로운 값을 가지고 리렌더링 되는 것! UI를 refresh
+            // React.js는 매번 자동으로 바뀌는 리렌더링을 해준다. '실제로 바뀌는 값'만 판단해서 불필요한 리렌더링을 제외한 채로 동작한다.
+            return(
+            <div>
+                <h3>
+                    Total clicks : {counter} 
+                </h3>
+                <button onClick={onClick}>
+                    Click me
+                </button>
+            </div> 
+            ); 
+            }
+
+        ReactDOM.render(<App/>, root);
+    </script>
+</body>
+</html>
