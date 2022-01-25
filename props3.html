@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
+<script type="text/babel">
+    function Btn({text, fontSize = 12}){
+        // fontSize 기본값 설정 가능. 두번 째 Btn에서만 fontSize 적용. fontSize prop가 없기 때문. 이것은 React와 관련된게 아니라 javascript 문법과 관련된 것. 정의되지 않은 변수에 관한 기본값을 줄 수 있다.
+        // console.log(text, fontSize);
+        return (  
+        <button 
+            style={
+            {
+                backgroundColor : "tomato",
+                color : "white",
+                padding : "10px 20px",
+                border : "0",
+                borderRadius : "10px",
+                fontSize,
+            }}           
+            >
+            {text}
+            </button>
+       
+        );
+    }
+
+    Btn.propTypes = {
+        text : PropTypes.string.isRequired,
+        fontSize : PropTypes.number,
+    }
+
+    function App(){
+        return(
+            <div>
+              <Btn text="Save Changes" fontSize={18}/>
+              <Btn text={"Continue"}/>
+            </div>
+        );
+        }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
+
+
+// prop를 이용해 설정 가능한 컴포넌트를 갖을 수 있다. 내용이 같으면 복붙하지 않아도 됨.
+// 복붙하는 대신에 어떤 prop들을 받을 수 있는 Btn 컴포넌트를 만들 수 있다.
+</script>
+</body>
+</html>
